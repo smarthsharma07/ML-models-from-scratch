@@ -2,37 +2,40 @@
 
 A collection of Machine Learning algorithms implemented from scratch using **NumPy**.
 
-The goal of this repository is to understand the mathematics and implementation details behind popular machine learning algorithms instead of relying on high-level libraries like scikit-learn.
+The purpose of this repository is to understand the mathematics, algorithms, and implementation details behind machine learning models instead of relying solely on high-level libraries such as **scikit-learn**.
+
+Every implementation focuses on:
+- Understanding the underlying mathematics
+- Writing clean, reusable code
+- Validating results against scikit-learn (where applicable)
+
+---
 
 ## Objectives
 
-- Understand the mathematical foundations of ML algorithms.
-- Implement each algorithm from scratch.
-- Maintain a clean and consistent API across models.
+- Learn the mathematical foundations of Machine Learning.
+- Implement popular algorithms from scratch using NumPy.
+- Maintain a clean and consistent API inspired by scikit-learn.
 - Compare implementations with scikit-learn for correctness.
-- Build a personal educational machine learning library.
+- Build an educational machine learning library for learning and reference.
 
 ---
 
 ## Repository Structure
 
-```
+```text
 ml-models-from-scratch/
 │
-├── Simple Linear Regression/
-│   ├── linear_regression.py
-│   ├── example.py
-│   └── README.md
-│
-├── Logistic Regression/
-├── K-Nearest Neighbors/
-├── Decision Tree/
-├── Random Forest/
-├── Support Vector Machine/
-├── Naive Bayes/
-├── K-Means/
-├── PCA/
-├── Neural Network/
+├── supervised_learning/
+│   ├── simple_linear_regression/
+│   │   ├── linear_regression.py
+│   │   ├── example.py
+│   │   └── README.md
+│   │
+│   └── multiple_linear_regression/
+│       ├── multiple_linear_regression.py
+│       ├── example.py
+│       └── README.md
 │
 ├── requirements.txt
 └── README.md
@@ -42,29 +45,46 @@ ml-models-from-scratch/
 
 ## Implemented Algorithms
 
-| Algorithm | Status |
-|-----------|--------|
-| Simple Linear Regression | ✅ |
-| Multiple Linear Regression | ⏳ |
-| Logistic Regression | ⏳ |
-| K-Nearest Neighbors | ⏳ |
-| Decision Tree | ⏳ |
-| Random Forest | ⏳ |
-| Naive Bayes | ⏳ |
-| Support Vector Machine | ⏳ |
-| K-Means Clustering | ⏳ |
-| Principal Component Analysis | ⏳ |
-| Neural Network | ⏳ |
+### Supervised Learning
+
+- ✅ Simple Linear Regression
+- ✅ Multiple Linear Regression (Normal Equation)
+
+---
+
+## Roadmap
+
+### Supervised Learning
+
+- Logistic Regression
+- K-Nearest Neighbors (KNN)
+- Decision Tree
+- Random Forest
+- Support Vector Machine (SVM)
+- Naive Bayes
+
+### Unsupervised Learning
+
+- K-Means Clustering
+
+### Dimensionality Reduction
+
+- Principal Component Analysis (PCA)
+
+### Deep Learning
+
+- Feed Forward Neural Network
 
 ---
 
 ## Features
 
 - Pure NumPy implementations
-- Well-commented code
+- Clean and beginner-friendly code
 - Mathematical explanations
 - Usage examples
-- Simple and readable API
+- Consistent API across models
+- Validation against scikit-learn
 
 ---
 
@@ -76,7 +96,7 @@ Clone the repository
 git clone https://github.com/<your-username>/ml-models-from-scratch.git
 ```
 
-Install dependencies
+Install the required dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -87,7 +107,7 @@ pip install -r requirements.txt
 ## Example
 
 ```python
-from linear_regression import LinearRegressionScratch
+from supervised_learning.simple_linear_regression.linear_regression import LinearRegressionScratch
 
 model = LinearRegressionScratch()
 
@@ -101,17 +121,33 @@ print(model.bias)
 
 ---
 
+## Validation
+
+Each implementation is compared against the equivalent implementation in **scikit-learn** whenever possible to verify correctness. Minor numerical differences may occur because of floating-point precision.
+
+---
+
 ## Future Improvements
 
+- Gradient Descent implementations
+- Mini-Batch Gradient Descent
+- Ridge Regression
+- Lasso Regression
+- Polynomial Regression
+- Feature Scaling utilities
 - Unit tests
 - Performance benchmarks
-- Gradient Descent implementations
-- Visualization notebooks
-- Feature scaling utilities
-- Regularization (Lasso & Ridge)
+- Interactive notebooks
+- Comprehensive documentation for every algorithm
+
+---
+
+## Contributing
+
+Contributions, suggestions, and bug reports are welcome. Feel free to open an issue or submit a pull request.
 
 ---
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the **MIT License**.
