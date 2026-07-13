@@ -4,20 +4,18 @@ A collection of Machine Learning algorithms implemented from scratch using **Num
 
 The purpose of this repository is to understand the mathematics, algorithms, and implementation details behind machine learning models instead of relying solely on high-level libraries such as **scikit-learn**.
 
-Every implementation focuses on:
-- Understanding the underlying mathematics
-- Writing clean, reusable code
-- Validating results against scikit-learn (where applicable)
+Each implementation is built from first principles, accompanied by mathematical derivations, clean code, and practical examples.
 
 ---
 
 ## Objectives
 
-- Learn the mathematical foundations of Machine Learning.
-- Implement popular algorithms from scratch using NumPy.
-- Maintain a clean and consistent API inspired by scikit-learn.
-- Compare implementations with scikit-learn for correctness.
-- Build an educational machine learning library for learning and reference.
+* Learn the mathematical foundations of Machine Learning.
+* Implement popular machine learning algorithms from scratch using NumPy.
+* Build reusable, well-structured implementations.
+* Maintain a clean API inspired by scikit-learn.
+* Validate implementations against scikit-learn whenever applicable.
+* Create an educational repository for learning and reference.
 
 ---
 
@@ -27,17 +25,27 @@ Every implementation focuses on:
 ml-models-from-scratch/
 │
 ├── supervised_learning/
+│   │
 │   ├── simple_linear_regression/
 │   │   ├── linear_regression.py
+│   │   ├── derivation.md
 │   │   ├── example.py
 │   │   └── README.md
 │   │
-│   └── multiple_linear_regression/
-│       ├── multiple_linear_regression.py
+│   ├── multiple_linear_regression/
+│   │   ├── multiple_linear_regression.py
+│   │   ├── derivation.md
+│   │   ├── example.py
+│   │   └── README.md
+│   │
+│   └── gradient_descent/
+│       ├── gradient_descent.py
+│       ├── derivation.md
 │       ├── example.py
 │       └── README.md
 │
 ├── requirements.txt
+├── LICENSE
 └── README.md
 ```
 
@@ -47,8 +55,9 @@ ml-models-from-scratch/
 
 ### Supervised Learning
 
-- ✅ Simple Linear Regression
-- ✅ Multiple Linear Regression (Normal Equation)
+* ✅ Simple Linear Regression (Normal Equation)
+* ✅ Multiple Linear Regression (Normal Equation)
+* ✅ Linear Regression using Batch Gradient Descent
 
 ---
 
@@ -56,47 +65,63 @@ ml-models-from-scratch/
 
 ### Supervised Learning
 
-- Logistic Regression
-- K-Nearest Neighbors (KNN)
-- Decision Tree
-- Random Forest
-- Support Vector Machine (SVM)
-- Naive Bayes
+* Logistic Regression
+* Ridge Regression
+* Lasso Regression
+* Polynomial Regression
+* K-Nearest Neighbors (KNN)
+* Decision Tree
+* Random Forest
+* Support Vector Machine (SVM)
+* Naive Bayes
+
+### Optimization
+
+* Stochastic Gradient Descent (SGD)
+* Mini-Batch Gradient Descent
+* Momentum Gradient Descent
+* RMSProp
+* Adam Optimizer
 
 ### Unsupervised Learning
 
-- K-Means Clustering
+* K-Means Clustering
 
 ### Dimensionality Reduction
 
-- Principal Component Analysis (PCA)
+* Principal Component Analysis (PCA)
 
 ### Deep Learning
 
-- Feed Forward Neural Network
+* Feed Forward Neural Network
+* Backpropagation
+* Activation Functions
+* Loss Functions
 
 ---
 
 ## Features
 
-- Pure NumPy implementations
-- Clean and beginner-friendly code
-- Mathematical explanations
-- Usage examples
-- Consistent API across models
-- Validation against scikit-learn
+* Pure NumPy implementations
+* No machine learning libraries used in model implementations
+* Mathematical derivations for every algorithm
+* Beginner-friendly and well-documented code
+* Example scripts for every model
+* Consistent API inspired by scikit-learn
+* Validation against scikit-learn implementations
+* Modular project structure for easy extension
 
 ---
 
 ## Installation
 
-Clone the repository
+Clone the repository:
 
 ```bash
 git clone https://github.com/<your-username>/ml-models-from-scratch.git
 ```
 
-Install the required dependencies
+Install the dependencies:
 
 ```bash
 pip install -r requirements.txt
@@ -107,38 +132,42 @@ pip install -r requirements.txt
 ## Example
 
 ```python
-from supervised_learning.simple_linear_regression.linear_regression import LinearRegressionScratch
+from supervised_learning.gradient_descent.gradient_descent import GradientDescent
 
-model = LinearRegressionScratch()
+model = GradientDescent(
+    learning_rate=0.01,
+    epochs=1000
+)
 
 model.fit(X_train, y_train)
 
 predictions = model.predict(X_test)
 
-print(model.weight)
-print(model.bias)
+print("Weights:", model.weights)
+print("Bias:", model.bias)
+print("R² Score:", model.score(X_test, y_test))
 ```
 
 ---
 
 ## Validation
 
-Each implementation is compared against the equivalent implementation in **scikit-learn** whenever possible to verify correctness. Minor numerical differences may occur because of floating-point precision.
+Whenever possible, each implementation is validated against its equivalent implementation in **scikit-learn**. Small numerical differences may occur because of floating-point precision or optimization methods.
 
 ---
 
 ## Future Improvements
 
-- Gradient Descent implementations
-- Mini-Batch Gradient Descent
-- Ridge Regression
-- Lasso Regression
-- Polynomial Regression
-- Feature Scaling utilities
-- Unit tests
-- Performance benchmarks
-- Interactive notebooks
-- Comprehensive documentation for every algorithm
+* Feature Scaling (StandardScaler, MinMaxScaler)
+* Cross Validation
+* Evaluation Metrics
+* Regularization Techniques
+* Model Serialization
+* Unit Tests
+* Performance Benchmarks
+* Visualization Utilities
+* Interactive Jupyter Notebooks
+* Comprehensive Documentation
 
 ---
 
