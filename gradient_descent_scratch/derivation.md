@@ -1,178 +1,212 @@
 # Derivation of Gradient Descent for Linear Regression
 
-## 1. Hypothesis
+This document derives the Gradient Descent optimization algorithm used to train a Linear Regression model.
 
-For a dataset with (n) samples and (m) features, the prediction is
+---
 
-[
+# 1. Linear Regression Hypothesis
+
+Given a dataset with **n** samples and **m** features,
+
+- $X \in \mathbb{R}^{n \times m}$ : Feature matrix
+- $w \in \mathbb{R}^{m}$ : Weight vector
+- $b \in \mathbb{R}$ : Bias
+- $\hat{y}$ : Predicted output
+
+The prediction equation is
+
+$$
 \hat{y}=Xw+b
-]
-
-where
-
-* (X) is the feature matrix
-* (w) is the weight vector
-* (b) is the bias
-* (\hat{y}) is the predicted output
+$$
 
 ---
 
-## 2. Loss Function
+# 2. Loss Function
 
-The objective is to minimize the Mean Squared Error (MSE).
+To measure how well the model fits the data, we use the **Mean Squared Error (MSE)** loss.
 
-[
+$$
 J(w,b)=\frac{1}{2n}\sum_{i=1}^{n}(y_i-\hat{y}_i)^2
-]
+$$
 
-The factor of (\frac{1}{2}) simplifies differentiation because the derivative of the square introduces a factor of 2, which cancels it.
+The factor $\frac{1}{2}$ is included because it cancels the factor of 2 that appears during differentiation.
 
-Substituting the prediction equation,
+Substituting the hypothesis,
 
-[
-J(w,b)=\frac{1}{2n}\sum_{i=1}^{n}(y_i-(Xw+b))^2
-]
+$$
+J(w,b)=\frac{1}{2n}\sum_{i=1}^{n}\left(y_i-(Xw+b)\right)^2
+$$
 
 ---
 
-## 3. Gradient with Respect to the Weights
+# 3. Gradient with Respect to the Weights
 
-Differentiate the loss with respect to the weight vector.
+To minimize the loss, compute the partial derivative with respect to the weight vector.
 
-[
+Using the chain rule,
+
+$$
 \frac{\partial J}{\partial w}
-=============================
-
+=
 \frac{1}{n}X^T(\hat{y}-y)
-]
+$$
 
-This gradient indicates how each weight influences the loss.
+This gradient tells us how changing each weight affects the loss.
 
 ---
 
-## 4. Gradient with Respect to the Bias
+# 4. Gradient with Respect to the Bias
 
-Differentiate the loss with respect to the bias.
+Similarly,
 
-[
+$$
 \frac{\partial J}{\partial b}
-=============================
+=
+\frac{1}{n}\sum_{i=1}^{n}(\hat{y}_i-y_i)
+$$
 
-\frac{1}{n}\sum(\hat{y}-y)
-]
-
-Since the bias affects every prediction equally, its gradient is simply the average prediction error.
+Since the bias contributes equally to every prediction, its gradient is simply the average prediction error.
 
 ---
 
-## 5. Gradient Descent Update Rule
+# 5. Gradient Descent Update Rule
 
-Gradient Descent updates the parameters by moving in the direction opposite to the gradient.
+Gradient Descent updates the parameters in the direction opposite to the gradient.
 
 ### Update the weights
 
-[
+$$
 w
 =
-
-## w
-
+w
+-
 \alpha
 \frac{\partial J}{\partial w}
-]
+$$
 
 Substituting the gradient,
 
-[
+$$
 w
 =
-
-## w
-
+w
+-
 \alpha
 \left(
 \frac{1}{n}
-X^T
-(\hat{y}-y)
+X^T(\hat{y}-y)
 \right)
-]
+$$
 
 ---
 
 ### Update the bias
 
-[
+$$
 b
 =
-
-## b
-
+b
+-
 \alpha
 \frac{\partial J}{\partial b}
-]
+$$
 
-Substituting the gradient,
+Substituting,
 
-[
+$$
 b
 =
-
-## b
-
+b
+-
 \alpha
 \left(
 \frac{1}{n}
-\sum(\hat{y}-y)
+\sum_{i=1}^{n}
+(\hat{y}_i-y_i)
 \right)
-]
+$$
 
 where
 
-* (\alpha) is the learning rate.
+- $\alpha$ = Learning Rate
 
 ---
 
-## 6. Training Algorithm
+# 6. Complete Gradient Descent Algorithm
 
-Repeat the following steps for each epoch:
+For each training epoch,
 
-1. Compute predictions.
+### Step 1: Compute Predictions
 
-[
+$$
 \hat{y}=Xw+b
-]
-
-2. Compute prediction errors.
-
-[
-\text{error}=\hat{y}-y
-]
-
-3. Compute the gradients.
-
-[
-dw=\frac{1}{n}X^T(\hat{y}-y)
-]
-
-[
-db=\frac{1}{n}\sum(\hat{y}-y)
-]
-
-4. Update the parameters.
-
-[
-w=w-\alpha dw
-]
-
-[
-b=b-\alpha db
-]
-
-5. Repeat until the desired number of epochs is reached or the gradients become sufficiently small.
+$$
 
 ---
 
-## Corresponding NumPy Implementation
+### Step 2: Compute Errors
+
+$$
+\text{error}
+=
+\hat{y}-y
+$$
+
+---
+
+### Step 3: Compute Gradients
+
+Weight gradient
+
+$$
+dw
+=
+\frac{1}{n}
+X^T(\hat{y}-y)
+$$
+
+Bias gradient
+
+$$
+db
+=
+\frac{1}{n}
+\sum_{i=1}^{n}
+(\hat{y}-y)
+$$
+
+---
+
+### Step 4: Update Parameters
+
+Weights
+
+$$
+w
+=
+w-\alpha dw
+$$
+
+Bias
+
+$$
+b
+=
+b-\alpha db
+$$
+
+---
+
+### Step 5
+
+Repeat until
+
+- the desired number of epochs is reached, or
+- the gradients become sufficiently small.
+
+---
+
+# Corresponding NumPy Implementation
 
 ```python
 predictions = np.dot(X_train, self.weights) + self.bias
@@ -186,4 +220,27 @@ self.weights -= self.learning_rate * dw
 self.bias -= self.learning_rate * db
 ```
 
-These equations form the mathematical foundation of Batch Gradient Descent for Linear Regression.
+---
+
+# Time Complexity
+
+For each epoch,
+
+- Prediction: **O(n × m)**
+- Gradient Computation: **O(n × m)**
+- Parameter Update: **O(m)**
+
+Overall training complexity:
+
+$$
+O(\text{epochs} \times n \times m)
+$$
+
+where
+
+- $n$ = Number of samples
+- $m$ = Number of features
+
+---
+
+This derivation forms the mathematical foundation of **Batch Gradient Descent for Linear Regression**. The same objective function is also optimized by **Stochastic Gradient Descent (SGD)** and **Mini-Batch Gradient Descent**, which differ only in the number of training samples used to compute the gradients at each update.
