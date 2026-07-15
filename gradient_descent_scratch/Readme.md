@@ -1,55 +1,117 @@
-# Linear Regression using Gradient Descent (From Scratch)
+# Gradient Descent Algorithms for Linear Regression (From Scratch)
 
-A NumPy implementation of **Linear Regression** trained using **Batch Gradient Descent**, built completely from scratch without using machine learning libraries such as scikit-learn.
+A NumPy implementation of **Linear Regression** trained using multiple **Gradient Descent optimization algorithms**, built completely from scratch without relying on machine learning libraries such as **scikit-learn**.
+
+The goal of this project is to understand how optimization algorithms work internally by implementing them from first principles.
+
+---
+
+## Implemented Algorithms
+
+- ✅ Batch Gradient Descent
+- ✅ Stochastic Gradient Descent (SGD)
+- ✅ Mini-Batch Gradient Descent
+
+---
 
 ## Features
 
-* Batch Gradient Descent
-* Learnable weights and bias
-* Mean Squared Error (MSE) loss
-* Configurable learning rate
-* Configurable number of epochs
-* Early stopping using gradient tolerance
-* Prediction on unseen data
-* R² score evaluation
-* Loss history for visualizing convergence
+- Pure NumPy implementation
+- Learnable weights and bias
+- Mean Squared Error (MSE) loss
+- Configurable learning rate
+- Configurable number of epochs
+- Configurable batch size (Mini-Batch GD)
+- Dataset shuffling for SGD and Mini-Batch GD
+- Prediction on unseen data
+- R² score evaluation
+
+---
 
 ## Mathematical Model
 
-For a dataset with one or more features, the prediction is given by
+For a dataset with one or more features,
 
-[
-\hat{y} = Xw + b
-]
+\[
+\hat{y}=Xw+b
+\]
 
-where:
+where
 
-* (X) = feature matrix
-* (w) = weight vector
-* (b) = bias
-* (\hat{y}) = predicted output
+- **X** → Feature matrix
+- **w** → Weight vector
+- **b** → Bias
+- **ŷ** → Predicted value
 
-The objective is to minimize the Mean Squared Error (MSE) between the predicted and actual values.
+The objective is to minimize the **Mean Squared Error (MSE)**
 
-## Gradient Descent
+\[
+MSE=\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat y_i)^2
+\]
 
-Instead of solving the normal equation directly, this implementation minimizes the loss iteratively using Gradient Descent.
+using gradient-based optimization.
 
-At every epoch:
+---
 
-1. Compute predictions.
-2. Calculate prediction errors.
-3. Compute gradients of the loss with respect to the weights and bias.
-4. Update the parameters in the direction of decreasing loss.
+## Optimization Algorithms
 
-The process repeats until the specified number of epochs is reached or the gradients become sufficiently small.
+### Batch Gradient Descent
 
-## Usage
+Uses the **entire dataset** to compute the gradients before every parameter update.
+
+**Advantages**
+- Stable convergence
+- Exact gradient
+
+**Disadvantages**
+- Slow for very large datasets
+
+---
+
+### Stochastic Gradient Descent (SGD)
+
+Updates the parameters after **every training example**.
+
+**Advantages**
+- Faster updates
+- Escapes shallow local minima more easily
+- Suitable for online learning
+
+**Disadvantages**
+- Noisy convergence
+
+---
+
+### Mini-Batch Gradient Descent
+
+Updates the parameters using a **small batch of samples** instead of the entire dataset.
+
+This combines the stability of Batch GD with the speed of SGD and is the optimizer most commonly used in modern machine learning and deep learning.
+
+---
+
+## Project Structure
+
+```
+gradient_descent_scratch/
+│
+├── gradient_descent.py      # Batch Gradient Descent
+├── Stochastic_GD.py         # Stochastic Gradient Descent
+├── mini_batchGD.py          # Mini-Batch Gradient Descent
+├── GDRegressor.py
+├── derivation.md
+├── example.py
+└── README.md
+```
+
+---
+
+## Example Usage
 
 ```python
 from gradient_descent import GradientDescent
-from sklearn.model_selection import train_test_split
 from sklearn.datasets import make_regression
+from sklearn.model_selection import train_test_split
 
 X, y = make_regression(
     n_samples=500,
@@ -59,7 +121,8 @@ X, y = make_regression(
 )
 
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y,
+    X,
+    y,
     test_size=0.2,
     random_state=42
 )
@@ -73,48 +136,50 @@ model.fit(X_train, y_train)
 
 predictions = model.predict(X_test)
 
-print("Weights:", model.weights)
-print("Bias:", model.bias)
-print("R² Score:", model.score(X_test, y_test))
+print(model.score(X_test, y_test))
 ```
+
+---
 
 ## Time Complexity
 
-### Training
+| Algorithm | Training Complexity |
+|-----------|--------------------|
+| Batch GD | O(epochs × n_samples × n_features) |
+| SGD | O(epochs × n_samples × n_features) |
+| Mini-Batch GD | O(epochs × n_samples × n_features) |
 
-Each epoch performs matrix multiplication over all samples and features.
-
-**Time Complexity:** `O(epochs × n_samples × n_features)`
+Although the asymptotic complexity is the same, **SGD** and **Mini-Batch GD** perform much more frequent parameter updates and are generally preferred for large datasets.
 
 ### Prediction
 
-**Time Complexity:** `O(n_samples × n_features)`
+```
+O(n_samples × n_features)
+```
 
 ### Space Complexity
 
-**Space Complexity:** `O(n_features)`
+```
+O(n_features)
+```
+
+---
 
 ## Requirements
 
-* Python 3.x
-* NumPy
+- Python 3.x
+- NumPy
 
-Install NumPy using:
+Install NumPy
 
 ```bash
 pip install numpy
 ```
 
-## Future Improvements
+---
 
-* Stochastic Gradient Descent (SGD)
-* Mini-Batch Gradient Descent
-* L1/L2 Regularization
-* Momentum
-* Adam Optimizer
-* Learning Rate Scheduling
-* Feature Scaling utilities
+
 
 ## License
 
-This project is intended for educational purposes to demonstrate how Linear Regression and Gradient Descent work internally.
+This project is intended for educational purposes to demonstrate how Linear Regression optimization algorithms work internally.
