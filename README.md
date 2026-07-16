@@ -2,21 +2,21 @@
 
 A collection of Machine Learning algorithms implemented completely from scratch using **NumPy**.
 
-The goal of this repository is to understand the mathematics, optimization techniques, and implementation details behind machine learning algorithms instead of relying solely on high-level libraries such as **scikit-learn**.
+The purpose of this repository is to understand the mathematics, optimization algorithms, and implementation details behind machine learning models instead of relying solely on high-level libraries such as **scikit-learn**.
 
-Every implementation is built from first principles and includes mathematical derivations, clean code, practical examples, and comparisons with established libraries whenever applicable.
+Each implementation is built from first principles and includes mathematical derivations, clean code, practical examples, and validation against established libraries whenever applicable.
 
 ---
 
 # Objectives
 
-- Understand the mathematical foundations of Machine Learning.
-- Implement popular machine learning algorithms from scratch using NumPy.
-- Learn optimization algorithms used in machine learning.
-- Build reusable and well-structured implementations.
-- Maintain a clean API inspired by scikit-learn.
-- Validate implementations against scikit-learn whenever possible.
-- Create an educational repository for learning and reference.
+* Understand the mathematical foundations of Machine Learning.
+* Implement machine learning algorithms from scratch using NumPy.
+* Learn optimization algorithms and their underlying mathematics.
+* Build reusable, modular, and well-documented implementations.
+* Maintain a clean API inspired by scikit-learn.
+* Validate implementations against scikit-learn whenever possible.
+* Create an educational repository for learning, experimentation, and reference.
 
 ---
 
@@ -39,6 +39,11 @@ ml-models-from-scratch/
 │   │   ├── example.py
 │   │   └── README.md
 │   │
+│   ├── polynomial_linear_regression/
+│   │   ├── polynomial_linear_regression.py
+│   │   ├── example.py
+│   │   └── README.md
+│   │
 │   └── gradient_descent_scratch/
 │       ├── gradient_descent.py
 │       ├── stochastic_gradient_descent.py
@@ -58,72 +63,96 @@ ml-models-from-scratch/
 
 ## Supervised Learning
 
-### Linear Models
+### Regression
 
-- ✅ Simple Linear Regression (Normal Equation)
-- ✅ Multiple Linear Regression (Normal Equation)
-- ✅ Batch Gradient Descent for Linear Regression
-- ✅ Stochastic Gradient Descent (SGD)
-- ✅ Mini-Batch Gradient Descent
+| Algorithm                         | Status |
+| --------------------------------- | :----: |
+| Simple Linear Regression          |    ✅   |
+| Multiple Linear Regression        |    ✅   |
+| Polynomial Linear Regression      |    ✅   |
+| Batch Gradient Descent            |    ✅   |
+| Stochastic Gradient Descent (SGD) |    ✅   |
+| Mini-Batch Gradient Descent       |    ✅   |
 
 ---
 
 # Optimization Algorithms
 
-Implemented optimizers
+The repository currently includes implementations of the following optimization algorithms:
 
-- ✅ Batch Gradient Descent
-- ✅ Stochastic Gradient Descent
-- ✅ Mini-Batch Gradient Descent
+* ✅ Batch Gradient Descent
+* ✅ Stochastic Gradient Descent (SGD)
+* ✅ Mini-Batch Gradient Descent
+
+---
 
 # Roadmap
 
 ## Supervised Learning
 
-- Logistic Regression
-- Ridge Regression
-- Lasso Regression
-- Elastic Net Regression
-- Polynomial Regression
-- K-Nearest Neighbors (KNN)
-- Decision Tree
-- Random Forest
-- Support Vector Machine (SVM)
-- Naive Bayes
+### Regression
+
+* ✅ Simple Linear Regression
+* ✅ Multiple Linear Regression
+* ✅ Polynomial Linear Regression
+* Logistic Regression
+* Ridge Regression
+* Lasso Regression
+* Elastic Net Regression
+
+### Classification
+
+* K-Nearest Neighbors (KNN)
+* Logistic Regression
+* Naive Bayes
+* Support Vector Machine (SVM)
+* Decision Tree
+* Random Forest
+
+---
 
 ## Unsupervised Learning
 
-- K-Means Clustering
-- DBSCAN
-- Hierarchical Clustering
+* K-Means Clustering
+* DBSCAN
+* Hierarchical Clustering
+* Gaussian Mixture Models (GMM)
+
+---
 
 ## Dimensionality Reduction
 
-- Principal Component Analysis (PCA)
-- Linear Discriminant Analysis (LDA)
+* Principal Component Analysis (PCA)
+* Linear Discriminant Analysis (LDA)
+* t-SNE
+
+---
 
 ## Deep Learning
 
-- Perceptron
-- Feed Forward Neural Network
-- Backpropagation
-- Activation Functions
-- Loss Functions
-- Optimizers
+* Perceptron
+* Feed Forward Neural Network
+* Backpropagation
+* Activation Functions
+* Loss Functions
+* Optimizers
+* Convolutional Neural Networks (CNNs)
 
 ---
 
 # Features
 
-- Pure NumPy implementations
-- No machine learning libraries used in model implementations
-- Mathematical derivations for every algorithm
-- Clean, modular, and well-documented code
-- Example scripts for every model
-- Consistent API inspired by scikit-learn
-- Validation against scikit-learn implementations
-- Educational focus with readable implementations
-- Repository designed for continuous expansion
+* Pure NumPy implementations
+* No machine learning libraries used in model implementations
+* Mathematical derivations for every algorithm
+* Step-by-step implementations from first principles
+* Modular and reusable codebase
+* Clean API inspired by scikit-learn
+* Practical examples for every algorithm
+* Validation against scikit-learn implementations
+* Extensive documentation
+* Educational focus with readable code
+* Repository designed for continuous expansion
 
 ---
 
@@ -141,7 +170,7 @@ Move into the project
 cd ml-models-from-scratch
 ```
 
-Install dependencies
+Install the required dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -152,19 +181,15 @@ pip install -r requirements.txt
 # Example
 
 ```python
-from supervised_learning.gradient_descent_scratch.gradient_descent import GradientDescent
+from supervised_learning.polynomial_linear_regression.polynomial_linear_regression import PolynomialLinearRegression
 
-model = GradientDescent(
-    learning_rate=0.01,
-    epochs=1000
-)
+model = PolynomialLinearRegression(degree=2)
 
 model.fit(X_train, y_train)
 
 predictions = model.predict(X_test)
 
 print("Weights:", model.weights)
-print("Bias:", model.bias)
 print("R² Score:", model.score(X_test, y_test))
 ```
 
@@ -172,26 +197,27 @@ print("R² Score:", model.score(X_test, y_test))
 
 # Validation
 
-Wherever possible, implementations are compared against equivalent models from **scikit-learn** to verify correctness.
+Wherever applicable, implementations are compared with equivalent models from **scikit-learn** to verify mathematical correctness and numerical accuracy.
 
-Minor numerical differences may occur due to floating-point precision, parameter initialization, or optimization strategies.
+Minor differences may occur due to floating-point precision, implementation details, initialization strategies, or optimization methods.
 
 ---
 
 # Future Improvements
 
-- Feature Scaling (StandardScaler, MinMaxScaler)
-- Data Preprocessing Utilities
-- Cross Validation
-- Evaluation Metrics
-- Regularization Techniques
-- Learning Rate Scheduling
-- Early Stopping
-- Model Serialization
-- Unit Tests
-- Benchmarking
-- Visualization Utilities
-- Comprehensive Documentation
+* Feature Scaling (StandardScaler, MinMaxScaler)
+* Cross Validation
+* Evaluation Metrics
+* Regularization Techniques
+* Learning Rate Scheduling
+* Early Stopping
+* Hyperparameter Tuning
+* Model Serialization
+* Unit Tests
+* Benchmarking
+* Visualization Utilities
+* Performance Profiling
+* Comprehensive Documentation
 
 ---
 
@@ -199,7 +225,7 @@ Minor numerical differences may occur due to floating-point precision, parameter
 
 Contributions, suggestions, bug reports, and feature requests are welcome.
 
-If you find an issue or have an improvement in mind, feel free to open an issue or submit a pull request.
+If you discover an issue or have an idea for improvement, feel free to open an issue or submit a pull request.
 
 ---
 
@@ -209,6 +235,6 @@ This project is licensed under the **MIT License**.
 
 ---
 
-## Acknowledgements
+# Acknowledgements
 
-This repository is intended for educational purposes and serves as a personal learning journey into implementing machine learning algorithms from first principles.
+This repository is an educational project created to deepen my understanding of machine learning by implementing algorithms from first principles. The emphasis is on understanding the underlying mathematics, optimization techniques, and implementation details rather than relying on high-level machine learning libraries.
