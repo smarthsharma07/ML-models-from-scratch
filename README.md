@@ -1,4 +1,3 @@
-````md
 # Machine Learning Models From Scratch
 
 <p align="center">
