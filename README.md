@@ -1,10 +1,20 @@
+````md
 # Machine Learning Models From Scratch
 
-A collection of Machine Learning algorithms implemented completely from scratch using **NumPy**.
+<p align="center">
+
+![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python)
+![NumPy](https://img.shields.io/badge/NumPy-From%20Scratch-orange?logo=numpy)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/Status-Active-success)
+
+</p>
+
+A collection of **Machine Learning algorithms implemented entirely from scratch using NumPy**.
 
 The goal of this repository is to understand the mathematics, optimization techniques, and implementation details behind machine learning algorithms instead of relying solely on high-level libraries such as **scikit-learn**.
 
-Every implementation is built from first principles and includes mathematical derivations, clean code, practical examples, and comparisons with established libraries whenever applicable.
+Every implementation is built from first principles and includes mathematical derivations, clean code, practical examples, and validation against established libraries whenever applicable.
 
 ---
 
@@ -12,7 +22,7 @@ Every implementation is built from first principles and includes mathematical de
 
 - Understand the mathematical foundations of Machine Learning.
 - Implement machine learning algorithms entirely from scratch using NumPy.
-- Learn optimization algorithms and the mathematics behind them.
+- Learn optimization algorithms and numerical methods through practical implementations.
 - Build reusable, modular, and well-documented implementations.
 - Follow a clean API inspired by scikit-learn.
 - Validate implementations against scikit-learn whenever possible.
@@ -51,6 +61,12 @@ ml-models-from-scratch/
 │   │   ├── example.py
 │   │   └── README.md
 │   │
+│   ├── logistic_regression/
+│   │   ├── logistic_regression.py
+│   │   ├── derivation.md
+│   │   ├── example.py
+│   │   └── README.md
+│   │
 │   └── gradient_descent_scratch/
 │       ├── gradient_descent.py
 │       ├── stochastic_gradient_descent.py
@@ -62,7 +78,7 @@ ml-models-from-scratch/
 ├── requirements.txt
 ├── LICENSE
 └── README.md
-```
+````
 
 ---
 
@@ -72,20 +88,33 @@ ml-models-from-scratch/
 
 ### Regression
 
-| Algorithm | Status |
-|-----------|:------:|
-| Simple Linear Regression | ✅ |
-| Multiple Linear Regression | ✅ |
-| Polynomial Linear Regression | ✅ |
-| Ridge Regression | ✅ |
+| Algorithm                    | Status |
+| ---------------------------- | :----: |
+| Simple Linear Regression     |    ✅   |
+| Multiple Linear Regression   |    ✅   |
+| Polynomial Linear Regression |    ✅   |
+| Ridge Regression             |    ✅   |
+| Lasso Regression             |   🚧   |
+| Elastic Net Regression       |   🚧   |
+
+### Classification
+
+| Algorithm                    | Status |
+| ---------------------------- | :----: |
+| Logistic Regression          |    ✅   |
+| K-Nearest Neighbors (KNN)    |   🚧   |
+| Naive Bayes                  |   🚧   |
+| Support Vector Machine (SVM) |   🚧   |
+| Decision Tree                |   🚧   |
+| Random Forest                |   🚧   |
 
 ### Optimization Algorithms
 
-| Algorithm | Status |
-|-----------|:------:|
-| Batch Gradient Descent | ✅ |
-| Stochastic Gradient Descent (SGD) | ✅ |
-| Mini-Batch Gradient Descent | ✅ |
+| Algorithm                         | Status |
+| --------------------------------- | :----: |
+| Batch Gradient Descent            |    ✅   |
+| Stochastic Gradient Descent (SGD) |    ✅   |
+| Mini-Batch Gradient Descent       |    ✅   |
 
 ---
 
@@ -93,9 +122,9 @@ ml-models-from-scratch/
 
 The repository currently includes implementations of:
 
-- ✅ Batch Gradient Descent
-- ✅ Stochastic Gradient Descent (SGD)
-- ✅ Mini-Batch Gradient Descent
+* ✅ Batch Gradient Descent
+* ✅ Stochastic Gradient Descent (SGD)
+* ✅ Mini-Batch Gradient Descent
 
 These optimizers are implemented independently to demonstrate how machine learning models learn parameters through iterative optimization.
 
@@ -107,66 +136,66 @@ These optimizers are implemented independently to demonstrate how machine learni
 
 ### Regression
 
-- ✅ Simple Linear Regression
-- ✅ Multiple Linear Regression
-- ✅ Polynomial Linear Regression
-- ✅ Ridge Regression
-- Lasso Regression
-- Elastic Net Regression
-- Logistic Regression
+* ✅ Simple Linear Regression
+* ✅ Multiple Linear Regression
+* ✅ Polynomial Linear Regression
+* ✅ Ridge Regression
+* 🚧 Lasso Regression
+* 🚧 Elastic Net Regression
 
 ### Classification
 
-- K-Nearest Neighbors (KNN)
-- Naive Bayes
-- Support Vector Machine (SVM)
-- Decision Tree
-- Random Forest
+* ✅ Logistic Regression
+* 🚧 K-Nearest Neighbors (KNN)
+* 🚧 Naive Bayes
+* 🚧 Support Vector Machine (SVM)
+* 🚧 Decision Tree
+* 🚧 Random Forest
 
 ---
 
 ## Unsupervised Learning
 
-- K-Means Clustering
-- DBSCAN
-- Hierarchical Clustering
-- Gaussian Mixture Models (GMM)
+* 🚧 K-Means Clustering
+* 🚧 DBSCAN
+* 🚧 Hierarchical Clustering
+* 🚧 Gaussian Mixture Models (GMM)
 
 ---
 
 ## Dimensionality Reduction
 
-- Principal Component Analysis (PCA)
-- Linear Discriminant Analysis (LDA)
-- t-SNE
+* 🚧 Principal Component Analysis (PCA)
+* 🚧 Linear Discriminant Analysis (LDA)
+* 🚧 t-SNE
 
 ---
 
-## Deep Learning
+## Neural Networks
 
-- Perceptron
-- Feed Forward Neural Network
-- Backpropagation
-- Activation Functions
-- Loss Functions
-- Optimizers
-- Convolutional Neural Networks (CNNs)
+* 🚧 Perceptron
+* 🚧 Feed Forward Neural Networks
+* 🚧 Backpropagation
+* 🚧 Activation Functions
+* 🚧 Loss Functions
+* 🚧 Optimizers
+* 🚧 Convolutional Neural Networks (CNNs)
 
 ---
 
 # Features
 
-- Pure NumPy implementations
-- No machine learning libraries used in model implementations
-- Mathematical derivations for every algorithm
-- Step-by-step implementations from first principles
-- Modular and reusable codebase
-- Clean API inspired by scikit-learn
-- Practical examples for every algorithm
-- Validation against scikit-learn implementations
-- Comprehensive documentation
-- Educational focus with readable and maintainable code
-- Repository designed for continuous expansion
+* Pure NumPy implementations
+* No machine learning libraries used in model implementations
+* Mathematical derivations for every algorithm
+* Step-by-step implementations from first principles
+* Modular and reusable codebase
+* Clean API inspired by scikit-learn
+* Practical examples for every algorithm
+* Validation against scikit-learn implementations
+* Comprehensive documentation
+* Educational focus with readable and maintainable code
+* Repository designed for continuous expansion
 
 ---
 
@@ -195,12 +224,11 @@ pip install -r requirements.txt
 # Example
 
 ```python
-from supervised_learning.ridge_regression.ridge_regression import RidgeRegression
+from supervised_learning.logistic_regression.logistic_regression import LogisticRegression
 
-model = RidgeRegression(
-    learning_rate=0.01,
-    epochs=1000,
-    alpha=1.0
+model = LogisticRegression(
+    learning_rate=0.1,
+    epochs=1000
 )
 
 model.fit(X_train, y_train)
@@ -209,7 +237,6 @@ predictions = model.predict(X_test)
 
 print("Weights:", model.weights)
 print("Bias:", model.bias)
-print("R² Score:", model.score(X_test, y_test))
 ```
 
 ---
@@ -218,24 +245,25 @@ print("R² Score:", model.score(X_test, y_test))
 
 Wherever applicable, implementations are compared against equivalent models from **scikit-learn** to verify mathematical correctness and numerical accuracy.
 
-Minor differences may occur because of floating-point precision, optimization strategies, initialization methods, or implementation details.
+Minor differences may occur because of floating-point precision, optimization strategies, initialization methods, regularization, or implementation details.
 
 ---
 
 # Future Improvements
 
-- Feature Scaling (StandardScaler, MinMaxScaler)
-- Cross Validation
-- Evaluation Metrics
-- Learning Rate Scheduling
-- Early Stopping
-- Hyperparameter Tuning
-- Model Serialization
-- Unit Tests
-- Benchmarking
-- Visualization Utilities
-- Performance Profiling
-- Comprehensive Documentation
+* Feature Scaling
+* Cross Validation
+* Evaluation Metrics
+* Learning Rate Scheduling
+* Early Stopping
+* Hyperparameter Tuning
+* Model Serialization
+* Unit Tests
+* Benchmarking
+* Visualization Utilities
+* Performance Profiling
+* Continuous Integration (CI)
+* API Documentation
 
 ---
 
@@ -256,3 +284,8 @@ This project is licensed under the **MIT License**.
 # Acknowledgements
 
 This repository is an educational project created to deepen my understanding of machine learning by implementing algorithms from first principles. The focus is on understanding the underlying mathematics, optimization techniques, and implementation details rather than relying on high-level machine learning libraries.
+
+If you find this repository useful, consider giving it a ⭐.
+
+```
+```
